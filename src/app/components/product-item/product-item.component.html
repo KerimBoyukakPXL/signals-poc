@@ -1,0 +1,36 @@
+<div class="w-56 m-5 relative">
+  <div class="border-4 rounded-xl border-gray-300 h-72 w-56">
+    <img *ngIf="product.imageUrl" [src]="product.imageUrl" alt="{{ product.name }}" class="w-full h-full object-cover rounded-xl">
+    <div *ngIf="!product.imageUrl" class="w-full h-full bg-gray-100 flex items-center justify-center rounded-xl">
+      <span class="text-gray-500">Geen afbeelding</span>
+    </div>
+  </div>
+  <div class="absolute top-2 right-2 flex space-x-2">
+    <!-- Edit button -->
+    <button class="flex cursor-pointer items-center justify-center w-6 h-6 rounded-full bg-blue-400 text-white hover:bg-blue-600 focus:outline-none" (click)="navigateToEditProduct()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+        <path d="M16 5l3 3" />
+      </svg>
+    </button>
+    <!-- Delete button -->
+    <button class="flex cursor-pointer items-center justify-center w-6 h-6 rounded-full bg-red-400 text-white hover:bg-red-600 focus:outline-none" (click)="deleteProduct()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+  </div>
+  <div>
+    <h1 class="font-medium ml-1 mt-1 text-gray-800">{{product.name}}</h1>
+    <p class="text-gray-800 ml-1 w-11/12 text-sm font-quicksand">
+      {{ getLimitedDescription(product.description) }}
+    </p>
+    <p class="text-gray-700 ml-1 w-11/12 text-base font-semibold font-quicksand mt-1">
+      € {{ product.price | number:'1.2-2' }}
+    </p>
+  </div>
+</div>

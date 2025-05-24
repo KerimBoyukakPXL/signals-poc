@@ -1,0 +1,15 @@
+<div class="flex flex-wrap ml-7">
+  <h1 class="w-full m-6 text-3xl font-bold">Productenlijst</h1>
+  <div class="w3-animate-zoom border-4 rounded-xl border-gray-300 h-72 w-56 m-5 cursor-pointer" (click)="navigateToAddProduct()">
+    <div class="mt-16">
+      <h1 class="text-8xl font-quicksand text-gray-400 text-center">+</h1>
+      <p class="font-medium text-gray-600 text-center">
+        Voeg een product toe
+      </p>
+    </div>
+  </div>
+  <div *ngFor="let product of productsSig()">
+    <app-product-item [product]="product"></app-product-item>
+  </div>
+</div>
+

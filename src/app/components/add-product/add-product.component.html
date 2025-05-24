@@ -1,0 +1,72 @@
+<div class="min-h-screen flex flex-col items-center mx-24 mt-10">
+  <div class="w-full max-w-md">
+    <div class="flex flex-col items-center">
+      <h1 class="text-center font-cardenio text-2xl md:text-4xl text-gray-800">Product toevoegen</h1>
+    </div>
+
+    <div class="mt-6 space-y-6 w-full max-w-md">
+      <form [formGroup]="uploadProductForm" (ngSubmit)="onUpload()">
+        <div>
+          <h2 class="text-gray-800 font-bold font-quicksand text-left mt-2">Naam</h2>
+          <input
+            class="mt-2 w-full p-2 border border-black rounded text-gray-800 font-quicksand focus:outline-none"
+            type="text"
+            id="name"
+            formControlName="name">
+          <div *ngIf="uploadProductForm.get('name')?.hasError('required') && uploadProductForm.get('name')?.touched" class="mt-2">
+            <p class="text-red-500 text-sm font-quicksand">Productnaam is verplicht!</p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-gray-800 font-bold font-quicksand text-left mt-2">Beschrijving</h2>
+          <textarea
+            class="mt-2 w-full p-2 border border-black rounded text-gray-800 font-quicksand focus:outline-none"
+            id="description"
+            formControlName="description"
+            style="white-space: pre-wrap;"
+            rows="3"></textarea>
+          <div *ngIf="uploadProductForm.get('description')?.hasError('required') && uploadProductForm.get('description')?.touched" class="mt-2">
+            <p class="text-red-500 text-sm font-quicksand">Beschrijving is verplicht!</p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-gray-800 font-bold font-quicksand text-left mt-2">Prijs</h2>
+          <input
+            class="mt-2 w-full p-2 border border-black rounded text-gray-800 font-quicksand focus:outline-none"
+            type="number"
+            id="price"
+            formControlName="price">
+          <div *ngIf="uploadProductForm.get('price')?.hasError('required') && uploadProductForm.get('price')?.touched" class="mt-2">
+            <p class="text-red-500 text-sm font-quicksand">Prijs is verplicht!</p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-gray-800 font-bold font-quicksand text-left mt-2">Afbeelding URL</h2>
+          <input
+            class="mt-2 w-full p-2 border border-black rounded text-gray-800 font-quicksand focus:outline-none"
+            type="text"
+            id="imageUrl"
+            formControlName="imageUrl"
+            placeholder="https://example.com/image.jpg">
+        </div>
+
+        <div class="flex space-x-4 m-4">
+          <button
+            (click)="navigateToProducts()"
+            class="bg-orange-200 w-full h-10 rounded-[10px] border-4 border-b-8 border-orange-300 transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 font-quicksand font-bold text-orange-500">
+            Annuleren
+          </button>
+          <button
+            [disabled]="uploadProductForm.invalid"
+            class="bg-green-200 w-full h-10 rounded-[10px] border-4 border-b-8 border-green-300 transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 font-quicksand font-bold text-green-500"
+            type="submit">
+            Toevoegen
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
